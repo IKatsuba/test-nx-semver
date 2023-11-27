@@ -78,8 +78,8 @@
               "section": "Code Refactoring"
             },
             {
-              "type": "perf",
-              "section": "Performance Improvements"
+              "section": "Performance Improvements",
+              "type": "perf"
             }
           ]
         }
