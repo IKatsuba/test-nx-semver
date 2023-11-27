@@ -61,7 +61,7 @@
       "executor": "@jscutlery/semver:github",
       "options": {
         "tag": "{tag}",
-        "notesFile": "./test/CHANGELOG.md"
+        "notes": "{notes}"
       }
     }
   },
