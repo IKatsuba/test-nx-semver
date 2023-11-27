@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.0.5](https://github.com/IKatsuba/test-nx-semver/compare/test@0.0.4...test@0.0.5) (2023-11-27)
+
+
+### Bug Fixes
+
+* **test:** reorder fields in project.json ([67244d9](https://github.com/IKatsuba/test-nx-semver/commit/67244d94082d10af8f78e83cb2422a5d126959e1))
+
+
+
 ## [0.0.4](https://github.com/IKatsuba/test-nx-semver/compare/test@0.0.3...test@0.0.4) (2023-11-27)
 
 
