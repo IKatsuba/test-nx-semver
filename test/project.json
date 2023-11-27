@@ -50,9 +50,38 @@
       "options": {
         "commitMessageFormat": "release({projectName}): {version} [skip ci]",
         "tagPrefix": "{projectName}@",
-        "postTargets": ["github"],
+        "postTargets": [
+          "github"
+        ],
         "push": true,
-        "preset": "angular"
+        "preset": {
+          "types": [
+            {
+              "type": "feat",
+              "section": "Features"
+            },
+            {
+              "type": "fix",
+              "section": "Bug Fixes"
+            },
+            {
+              "type": "build",
+              "section": "Dependency updates"
+            },
+            {
+              "type": "docs",
+              "section": "Documentation"
+            },
+            {
+              "type": "refactor",
+              "section": "Code Refactoring"
+            },
+            {
+              "type": "perf",
+              "section": "Performance Improvements"
+            }
+          ]
+        }
       }
     },
     "github": {
