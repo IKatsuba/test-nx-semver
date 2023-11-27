@@ -50,7 +50,7 @@
       "options": {
         "commitMessageFormat": "release({projectName}): {version} [skip ci]",
         "tagPrefix": "{projectName}@",
-        "postTargets": ["test:github"],
+        "postTargets": ["github"],
         "push": true,
         "preset": {
           "name": "conventionalcommits",
