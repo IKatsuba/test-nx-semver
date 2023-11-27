@@ -35,6 +35,25 @@
           "codeCoverage": true
         }
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "commitMessageFormat": "release({projectName}): {version} [skip ci]",
+        "tagPrefix": "{projectName}@",
+        "postTargets": [
+          "github"
+        ],
+        "push": true,
+        "preset": "angular"
+      }
+    },
+    "github": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "tag": "{tag}",
+        "notes": "{notes}"
+      }
     }
   },
   "nxCloudAccessToken": "MTA5YmYzMzYtZmY5Yi00MGZmLTk0OWMtODgxMDMwODJlMmI0fHJlYWQtd3JpdGU="
