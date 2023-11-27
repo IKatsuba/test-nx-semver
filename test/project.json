@@ -47,9 +47,6 @@
     },
     "version": {
       "executor": "@jscutlery/semver:version",
-      "dependsOn": [
-        "^build"
-      ],
       "options": {
         "commitMessageFormat": "release({projectName}): {version} [skip ci]",
         "tagPrefix": "{projectName}@",
@@ -89,7 +86,7 @@
       "executor": "@jscutlery/semver:github",
       "options": {
         "tag": "{tag}",
-        "notes": "{notes}"
+        "notesFile": "./test/CHANGELOG.md"
       }
     }
   },
