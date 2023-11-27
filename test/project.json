@@ -47,7 +47,7 @@
     },
     "version": {
       "executor": "@jscutlery/semver:version",
-      "dependsOn": ["^build"],
+      "dependsOn": ["build"],
       "options": {
         "commitMessageFormat": "release({projectName}): {version} [skip ci]",
         "tagPrefix": "{projectName}@",
