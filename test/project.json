@@ -59,6 +59,9 @@
     },
     "github": {
       "executor": "@jscutlery/semver:github",
+      "dependsOn": [
+        "^build"
+      ],
       "options": {
         "tag": "{tag}",
         "notes": "{notes}",
