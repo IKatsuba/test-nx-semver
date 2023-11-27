@@ -51,6 +51,8 @@
         "commitMessageFormat": "release({projectName}): {version} [skip ci]",
         "tagPrefix": "{projectName}@",
         "postTargets": [
+          "build",
+          "npm-pack",
           "github"
         ],
         "push": true,
@@ -58,16 +60,10 @@
       }
     },
     "npm-pack": {
-      "command": "npm pack ./dist/test --pack-destination ./dist/test",
-      "dependsOn": [
-        "build"
-      ]
+      "command": "npm pack ./dist/test --pack-destination ./dist/test"
     },
     "github": {
       "executor": "@jscutlery/semver:github",
-      "dependsOn": [
-        "npm-pack"
-      ],
       "options": {
         "tag": "{tag}",
         "notes": "{notes}",
