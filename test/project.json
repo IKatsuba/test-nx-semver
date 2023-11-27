@@ -1,0 +1,97 @@
+{
+  "name": "test",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "test/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/test",
+        "main": "test/src/index.ts",
+        "tsConfig": "test/tsconfig.lib.json",
+        "assets": [
+          "test/*.md"
+        ]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs test {args.ver} {args.tag}",
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "test/**/*.ts",
+          "test/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "test/jest.config.ts"
+      }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "dependsOn": [
+        "^build"
+      ],
+      "options": {
+        "commitMessageFormat": "release({projectName}): {version} [skip ci]",
+        "tagPrefix": "{projectName}@",
+        "postTargets": ["test:github"],
+        "preset": {
+          "name": "conventionalcommits",
+          "types": [
+            {
+              "type": "feat",
+              "section": "Features"
+            },
+            {
+              "type": "fix",
+              "section": "Bug Fixes"
+            },
+            {
+              "type": "build",
+              "section": "Dependency updates"
+            },
+            {
+              "type": "docs",
+              "section": "Documentation"
+            },
+            {
+              "type": "refactor",
+              "section": "Code Refactoring"
+            },
+            {
+              "type": "perf",
+              "section": "Performance Improvements"
+            }
+          ]
+        }
+      }
+    },
+    "github": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "tag": "{tag}",
+        "notes": "{notes}"
+      }
+    }
+  },
+  "tags": []
+}
