@@ -24,7 +24,7 @@ env:
 jobs:
   dry-run-release:
     if: |
-      github.repository == 'code-pushup/cli' && (
+      (
         github.event_name == 'pull_request' ||
         (github.event_name == 'workflow_dispatch' && github.event.inputs.dryRun == 'true')
       )
@@ -46,7 +46,7 @@ jobs:
         run: npx nx affected --base=latest --target=version --parallel=1 --dryRun
   release:
     if: |
-      github.repository == 'code-pushup/cli' && (
+      (
         (github.event_name == 'workflow_dispatch' && github.event.inputs.dryRun == 'false') ||
         (github.event_name == 'push')
       )
